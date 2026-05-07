@@ -1,0 +1,10 @@
+.DS_Store
+*.bak
+BOOTSTRAP.md
+AGENTS.md
+SOUL.md
+USER.md
+TOOLS.md
+IDENTITY.md
+HEARTBEAT.md
+memory/
