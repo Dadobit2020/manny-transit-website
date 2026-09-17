@@ -1554,7 +1554,21 @@
     const navEl = document.getElementById('nav-' + id);
     if (navEl) navEl.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.hash.slice(1) !== id) {
+      history.pushState(null, '', '#' + id);
+    }
   }
+
+  // Direct/shareable links: mannytransit.com/#partners loads straight into
+  // that page, and the back/forward buttons work between pages.
+  function showPageFromHash() {
+    const id = location.hash.slice(1);
+    if (id && document.getElementById('page-' + id)) {
+      showPage(id);
+    }
+  }
+  window.addEventListener('hashchange', showPageFromHash);
+  document.addEventListener('DOMContentLoaded', showPageFromHash);
 
   function toggleFAQ(el) {
     const item = el.closest('.faq-item');
