@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Message Sign-Up — Manny Transit Co.</title>
+<meta name="description" content="Sign up to receive text messages from Manny Transit Co. — ride updates for patients and guardians, referral confirmations for partner facilities, and dispatch messages for drivers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628; --navy-mid: #112240; --blue: #007ACC; --blue-light: #1a9de0;
+    --sky: #5bb8f5; --teal: #00b4a0; --teal-light: #1dd1bc; --gold: #f5a623;
+    --white: #ffffff; --off-white: #f0f6ff; --gray-light: #e8f0fe;
+    --text-muted: #6b7c99; --text-dark: #0a1628; --danger: #c0392b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.6; }
+  nav {
+    background: var(--navy); padding: 0 1.25rem; display: flex; align-items: center;
+    justify-content: space-between; height: 72px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-logo { color: white; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+  .nav-back { color: var(--sky); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+  main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1rem 5rem; }
+  .card { background: var(--white); border-radius: 14px; padding: 2rem 1.5rem 2.25rem; box-shadow: 0 10px 40px rgba(10,22,40,0.08); }
+  @media (min-width: 640px) { .card { padding: 2.5rem; } }
+  h1 { font-family: 'Sora', sans-serif; font-size: 1.85rem; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.2; }
+  .lede { color: var(--text-muted); margin-bottom: 1.75rem; }
+  fieldset { border: 0; margin-bottom: 1.5rem; }
+  legend, label.block { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 0.45rem; color: var(--navy); }
+  .audience { display: grid; gap: 0.6rem; }
+  .audience label {
+    display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.85rem 1rem; border: 2px solid var(--gray-light);
+    border-radius: 10px; cursor: pointer; background: var(--white); transition: border-color .15s, background .15s;
+  }
+  .audience label:has(input:checked) { border-color: var(--teal); background: #f0fbf9; }
+  .audience input { margin-top: 0.25rem; accent-color: var(--teal); }
+  .audience strong { display: block; font-size: 0.98rem; }
+  .audience span { font-size: 0.85rem; color: var(--text-muted); }
+  .grid { display: grid; gap: 1rem; }
+  @media (min-width: 560px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+  .field label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; }
+  .field input, .field select {
+    width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid #cfd8e6; border-radius: 8px;
+    font: inherit; font-size: 1rem; background: var(--white); color: var(--text-dark);
+  }
+  .field input:focus, .field select:focus { outline: 2px solid var(--sky); border-color: var(--sky); }
+  .hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+  .hidden { display: none !important; }
+  .consent {
+    display: flex; gap: 0.8rem; align-items: flex-start; background: var(--gray-light);
+    border-left: 4px solid var(--blue); padding: 1rem 1.1rem; border-radius: 8px; margin: 1.5rem 0 1.25rem;
+  }
+  .consent input { margin-top: 0.3rem; width: 1.15rem; height: 1.15rem; flex-shrink: 0; accent-color: var(--blue); }
+  .consent p { font-size: 0.92rem; color: #2c3e50; }
+  .consent a { color: var(--blue); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  button.submit {
+    width: 100%; padding: 0.95rem 1.25rem; border: 0; border-radius: 10px; cursor: pointer;
+    background: var(--blue); color: white; font: inherit; font-size: 1.02rem; font-weight: 600;
+    transition: background .15s;
+  }
+  button.submit:hover { background: var(--blue-light); }
+  button.submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .error { color: var(--danger); font-size: 0.9rem; margin-top: 0.75rem; min-height: 1.2em; }
+  .success { text-align: center; padding: 1rem 0; }
+  .success .check { font-size: 3rem; line-height: 1; margin-bottom: 0.75rem; }
+  .success h2 { font-family: 'Sora', sans-serif; color: var(--navy); margin-bottom: 0.5rem; }
+  .success p { color: #2c3e50; }
+  .footnote { margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+  .footnote a { color: var(--blue); }
+  footer { text-align: center; padding: 2rem 1rem; color: var(--text-muted); font-size: 0.85rem; }
+  footer a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Manny Transit Co.</a>
+  <a class="nav-back" href="/">← Back to site</a>
+</nav>
+
+<main>
+  <div class="card">
+    <div id="formWrap">
+      <h1>Text Message Sign-Up</h1>
+      <p class="lede">Get updates from Manny Transit Co. by text. Choose who you are, enter your mobile number, and review the consent statement.</p>
+
+      <form id="optinForm" novalidate>
+        <fieldset>
+          <legend>I am signing up as…</legend>
+          <div class="audience">
+            <label>
+              <input type="radio" name="audience" value="PATIENT_GUARDIAN" required>
+              <div><strong>A patient, parent, or guardian</strong><span>Ride confirmations and driver arrival updates for scheduled transports.</span></div>
+            </label>
+            <label>
+              <input type="radio" name="audience" value="FACILITY_STAFF">
+              <div><strong>Staff at a partner facility</strong><span>Confirmations and scheduling updates for transport requests you submit or coordinate.</span></div>
+            </label>
+            <label>
+              <input type="radio" name="audience" value="DRIVER">
+              <div><strong>A Manny Transit driver</strong><span>Dispatch and trip-assignment messages.</span></div>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="grid two">
+          <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" type="text" autocomplete="given-name" required></div>
+          <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" type="text" autocomplete="family-name" required></div>
+        </div>
+        <div class="grid two" style="margin-top:1rem">
+          <div class="field">
+            <label for="phone">Mobile phone number</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(720) 555-0100" required>
+            <div class="hint">US mobile numbers only.</div>
+          </div>
+          <div class="field"><label for="email">Email <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label><input id="email" name="email" type="email" autocomplete="email"></div>
+        </div>
+
+        <div id="facilityFields" class="field hidden" style="margin-top:1rem">
+          <label for="organization">Facility or organization</label>
+          <input id="organization" name="organization" type="text" autocomplete="organization">
+        </div>
+
+        <div id="patientFields" class="grid two hidden" style="margin-top:1rem">
+          <div class="field">
+            <label for="relationship">I am the…</label>
+            <select id="relationship" name="relationship">
+              <option value="Patient">Patient</option>
+              <option value="Parent">Parent</option>
+              <option value="Guardian">Legal guardian</option>
+              <option value="POA">Power of attorney</option>
+              <option value="Caregiver">Caregiver / family member</option>
+            </select>
+          </div>
+          <div class="field" id="patientNameWrap">
+            <label for="patientName">Patient's name</label>
+            <input id="patientName" name="patientName" type="text">
+            <div class="hint">Only if you are signing up on someone else's behalf.</div>
+          </div>
+        </div>
+
+        <!-- Honeypot: hidden from people, filled by bots -->
+        <div class="hp" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+
+        <label class="consent">
+          <input id="agreed" name="agreed" type="checkbox">
+          <p id="consentText"></p>
+        </label>
+
+        <button class="submit" type="submit">Sign Up for Text Messages</button>
+        <div class="error" id="formError" role="alert"></div>
+      </form>
+
+      <p class="footnote">
+        Questions? Call <a href="tel:7209836104">720-983-6104</a> ·
+        <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a>
+      </p>
+    </div>
+
+    <div id="successWrap" class="success hidden">
+      <div class="check">✅</div>
+      <h2>You're signed up</h2>
+      <p>Thanks — we've recorded your consent to receive text messages from Manny Transit Co.</p>
+      <p style="margin-top:0.75rem;font-size:0.9rem;color:var(--text-muted)">You can reply <strong>STOP</strong> to any message to opt out, or <strong>HELP</strong> for help.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Manny Transit Co. — All Rights Reserved. · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+<script>
+  // Single place to update if the API is ever moved to a different domain.
+  const API_BASE = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+    ? 'http://localhost:3001/v1/public'
+    : 'https://manny-transit-967vm.ondigitalocean.app/api/v1/public';
+
+  const CONSENT_VERSION = '2026-09-21.1';
+
+  // The exact wording shown is what gets stored with each consent record, so
+  // these must keep every required disclosure: sender name, message purpose,
+  // frequency, "Message and data rates may apply", STOP/HELP, not a condition.
+  const CONSENT_TEXT = {
+    PATIENT_GUARDIAN:
+      'I agree to receive ride status text messages from Manny Transit Co. at the mobile number provided, ' +
+      'such as ride confirmations and driver arrival updates. Message frequency varies by trip. ' +
+      'Message and data rates may apply. Reply STOP to opt out at any time or HELP for help. ' +
+      'Consent is not a condition of receiving transportation services. See our Privacy Policy and Terms of Service.',
+    FACILITY_STAFF:
+      'I agree to receive text messages from Manny Transit Co. about transport requests I submit or coordinate, ' +
+      'including referral-received confirmations and scheduling updates. Message frequency varies. ' +
+      'Message and data rates may apply. Reply STOP to opt out at any time or HELP for help. ' +
+      'Consent is not a condition of any service. See our Privacy Policy and Terms of Service.',
+    DRIVER:
+      'I agree to receive dispatch and trip-assignment text messages from Manny Transit Co. at the mobile number provided. ' +
+      'Message frequency varies with trip volume. Message and data rates may apply. ' +
+      'Reply STOP to opt out at any time or HELP for help. Consent is not a condition of my contract or employment. ' +
+      'See our Privacy Policy and Terms of Service.',
+  };
+
+  const form = document.getElementById('optinForm');
+  const consentEl = document.getElementById('consentText');
+  const agreedEl = document.getElementById('agreed');
+  const errorEl = document.getElementById('formError');
+  const facilityFields = document.getElementById('facilityFields');
+  const patientFields = document.getElementById('patientFields');
+
+  function renderConsent(audience) {
+    const text = CONSENT_TEXT[audience] || CONSENT_TEXT.PATIENT_GUARDIAN;
+    // Render with the two policy links; the plain text (with names) is what we store.
+    consentEl.innerHTML = text
+      .replace('Privacy Policy', '<a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>')
+      .replace('Terms of Service', '<a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>');
+    consentEl.dataset.plain = text;
+    agreedEl.checked = false; // never pre-checked: consent must be an active choice
+  }
+
+  function selectedAudience() {
+    const el = form.querySelector('input[name="audience"]:checked');
+    return el ? el.value : null;
+  }
+
+  form.querySelectorAll('input[name="audience"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const a = selectedAudience();
+      facilityFields.classList.toggle('hidden', a !== 'FACILITY_STAFF');
+      patientFields.classList.toggle('hidden', a !== 'PATIENT_GUARDIAN');
+      renderConsent(a);
+    });
+  });
+  renderConsent('PATIENT_GUARDIAN');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.textContent = '';
+
+    const audience = selectedAudience();
+    if (!audience) { errorEl.textContent = 'Please choose who you are signing up as.'; return; }
+    if (!form.firstName.value.trim() || !form.lastName.value.trim()) { errorEl.textContent = 'Please enter your first and last name.'; return; }
+    if (form.phone.value.replace(/\D/g, '').length < 10) { errorEl.textContent = 'Please enter a valid 10-digit US mobile number.'; return; }
+    if (!agreedEl.checked) { errorEl.textContent = 'Please check the consent box to sign up.'; return; }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const payload = {
+      audience,
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      organization: audience === 'FACILITY_STAFF' ? form.organization.value : '',
+      relationship: audience === 'PATIENT_GUARDIAN' ? form.relationship.value : '',
+      patientName: audience === 'PATIENT_GUARDIAN' ? form.patientName.value : '',
+      agreed: agreedEl.checked,
+      consentText: consentEl.dataset.plain,
+      consentVersion: CONSENT_VERSION,
+      sourceUrl: window.location.href,
+      website: form.website.value, // honeypot
+    };
+
+    try {
+      const response = await fetch(`${API_BASE}/sms-consent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.success) {
+        document.getElementById('formWrap').classList.add('hidden');
+        document.getElementById('successWrap').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      errorEl.textContent = (data.error && data.error.message) || 'Something went wrong. Please try again or call 720-983-6104.';
+    } catch (err) {
+      errorEl.textContent = 'Network error — please try again or call 720-983-6104.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  });
+</script>
+
+</body>
+</html>
