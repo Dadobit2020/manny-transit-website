@@ -90,14 +90,14 @@
   }
   .hero-bg-img {
     position: absolute; inset: 0;
-    background-image: url('img/hero-denver.jpg');
+    background-image: url('img/veh-crisis-center.jpg');
     background-size: cover;
-    background-position: center 30%;
-    filter: brightness(0.3);
+    background-position: center 40%;
+    filter: brightness(0.75);
   }
   .hero-bg-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(0,122,204,0.4) 100%);
+    background: linear-gradient(90deg, rgba(10,22,40,0.94) 0%, rgba(10,22,40,0.78) 45%, rgba(10,22,40,0.25) 100%);
   }
   .hero-grid-lines {
     position: absolute; inset: 0;
@@ -376,12 +376,14 @@
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 260px 260px;
+    grid-template-rows: 260px 260px 220px;
     gap: 1rem; margin-top: 3rem;
   }
   .gallery-item { overflow: hidden; border-radius: 16px; position: relative; cursor: pointer; }
   .gallery-item:first-child { grid-column: 1 / 2; grid-row: 1 / 3; }
   .gallery-item:nth-child(4) { grid-column: 3 / 4; grid-row: 1 / 3; }
+  .gallery-item:nth-child(5) { grid-column: 1 / -1; }
+  .gallery-item:nth-child(5) img { object-position: center 65%; }
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
   .gallery-item:hover img { transform: scale(1.06); }
   .gallery-overlay {
@@ -516,7 +518,7 @@
     .contact-info-card { position: static; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child, .gallery-item:nth-child(4) { grid-column: auto; grid-row: auto; }
+    .gallery-item:first-child, .gallery-item:nth-child(4), .gallery-item:nth-child(5) { grid-column: auto; grid-row: auto; }
     .form-row { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
@@ -620,8 +622,8 @@
         <div class="hero-card">
           <div class="hero-card-icon" style="background:linear-gradient(135deg,#f5a623,#007ACC)">💳</div>
           <div class="hero-card-text">
-            <h4>Medicaid Accepted</h4>
-            <p>Most insurance plans welcome</p>
+            <h4>Medicaid Coverage Only</h4>
+            <p>Facility direct-billing also available</p>
           </div>
         </div>
       </div>
@@ -653,7 +655,7 @@
         <div class="why-card">
           <div class="why-icon">💳</div>
           <h3>Insurance & Medicaid</h3>
-          <p>We work with Medicaid behavioral health plans and facility direct-billing to reduce or eliminate out-of-pocket costs. Affordable care for everyone.</p>
+          <p>We bill Colorado Medicaid behavioral health coverage directly, and facility direct-billing is available for trips Medicaid does not cover.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">🧠</div>
@@ -674,7 +676,7 @@
     <div class="section-container">
       <div class="about-layout">
         <div class="about-img-wrap">
-          <img src="img/about-facility-transfer.jpg" alt="Calm, secure hallway inside a behavioral health facility during a client transfer" width="1200" height="1000" loading="lazy" />
+          <img src="img/team-recovery-center.jpg" alt="Manny Transit team member carrying an AED and first-aid kit past a Manny Transit vehicle at a community recovery center" width="1024" height="572" loading="lazy" style="object-position:40% center" />
           <div class="about-img-badge">
             <span class="big">24/7</span>
             <span class="label">7 Days a Week</span>
@@ -706,21 +708,21 @@
       <p class="section-sub">From crisis stabilization to ongoing treatment, we provide secure transport between the facilities that care for you.</p>
       <div class="services-preview-grid">
         <div class="service-prev-card">
-          <img class="service-prev-img" src="img/svc-crisis-stabilization.jpg" alt="Behavioral health professional in a supportive conversation at a crisis stabilization unit" width="1400" height="800" loading="lazy" />
+          <img class="service-prev-img" src="img/veh-crisis-center.jpg" alt="Manny Transit vehicle at a community crisis center with 24/7 walk-in services" width="1024" height="572" loading="lazy" />
           <div class="service-prev-body">
             <h3>🧭 Crisis Stabilization & Walk-In Centers</h3>
             <p>Secure, timely transport to crisis stabilization units and walk-in crisis centers for individuals in active behavioral health crisis.</p>
           </div>
         </div>
         <div class="service-prev-card">
-          <img class="service-prev-img" src="img/svc-psychiatric-hospital.jpg" alt="Calm, sunlit corridor inside a psychiatric hospital" width="1400" height="800" loading="lazy" />
+          <img class="service-prev-img" src="img/veh-secure-cabin.jpg" alt="Inside a Manny Transit vehicle: clear safety partition between driver and passengers" width="1024" height="572" loading="lazy" />
           <div class="service-prev-body">
             <h3>🏥 Psychiatric Hospital Transfers</h3>
             <p>Direct, dignified transport between psychiatric hospitals and inpatient behavioral health facilities.</p>
           </div>
         </div>
         <div class="service-prev-card">
-          <img class="service-prev-img" src="img/svc-detox-recovery.jpg" alt="Support group holding hands in a circle at a recovery center" width="1400" height="800" loading="lazy" />
+          <img class="service-prev-img" src="img/client-assist-detox.jpg" alt="Manny Transit team member assisting a client from the vehicle at a detox and recovery center" width="1024" height="572" loading="lazy" />
           <div class="service-prev-body">
             <h3>🌱 Detox & Substance Use Treatment</h3>
             <p>Scheduled and urgent transfers to approved detox and substance use disorder treatment facilities.</p>
@@ -738,27 +740,27 @@
     <div class="section-container">
       <div class="section-tag">Gallery</div>
       <h2 class="section-title">Care & Compassion in Action</h2>
-      <p class="section-sub">A look at the people and facilities that define Manny Transit Co.</p>
+      <p class="section-sub">A look at our vehicles and the care teams behind every Manny Transit Co. transfer.</p>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="img/gal-compassionate-care.jpg" alt="Caregiver holding a patient's hands" width="900" height="1240" loading="lazy" />
+          <img src="img/client-assist-detox.jpg" alt="A Manny Transit team member assisting a client at a recovery center" width="1024" height="572" loading="lazy" style="object-position:48% center" />
           <div class="gallery-overlay"><span>Compassionate Care</span></div>
         </div>
         <div class="gallery-item">
-          <img src="img/gal-facility-to-facility.jpg" alt="Quiet corridor inside a behavioral health facility" width="1200" height="800" loading="lazy" />
+          <img src="img/veh-crisis-center.jpg" alt="Manny Transit vehicle parked at a community crisis center" width="1024" height="572" loading="lazy" />
           <div class="gallery-overlay"><span>Facility to Facility</span></div>
         </div>
         <div class="gallery-item">
-          <img src="img/gal-calm-secure.jpg" alt="Calm, bright waiting area inside a care facility" width="1200" height="800" loading="lazy" />
-          <div class="gallery-overlay"><span>Calm & Secure</span></div>
+          <img src="img/veh-secure-cabin.jpg" alt="Clear safety partition inside a Manny Transit vehicle" width="1024" height="572" loading="lazy" />
+          <div class="gallery-overlay"><span>Secure Vehicles</span></div>
         </div>
         <div class="gallery-item">
-          <img src="img/gal-compassionate-support.jpg" alt="Counselor taking notes during a supportive conversation" width="900" height="1240" loading="lazy" />
-          <div class="gallery-overlay"><span>Compassionate Support</span></div>
+          <img src="img/veh-aed-cabin.jpg" alt="AED, first-aid kit and seating inside a Manny Transit vehicle" width="1024" height="572" loading="lazy" style="object-position:20% center" />
+          <div class="gallery-overlay"><span>Safety-Equipped</span></div>
         </div>
         <div class="gallery-item">
-          <img src="img/gal-recovery-support.jpg" alt="Support group walking together at a recovery facility" width="1200" height="800" loading="lazy" />
-          <div class="gallery-overlay"><span>Recovery Support</span></div>
+          <img src="img/veh-secure-storage.jpg" alt="Secure storage cargo area in a Manny Transit vehicle" width="1024" height="572" loading="lazy" />
+          <div class="gallery-overlay"><span>Secure Storage</span></div>
         </div>
       </div>
     </div>
@@ -812,15 +814,12 @@
   <div class="insurance-strip">
     <div class="section-container">
       <div>
-        <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.5rem;">Insurance & Payment We Accept</p>
-        <p style="font-size:0.88rem;color:var(--text-muted)">Contact us to verify your coverage before your first trip.</p>
+        <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.5rem;">Payment & Coverage</p>
+        <p style="font-size:0.88rem;color:var(--text-muted)">Medicaid coverage only. Contact us to verify eligibility before your first trip.</p>
       </div>
       <div class="insurance-badges">
         <span class="ins-badge">✅ Medicaid</span>
-        <span class="ins-badge">✅ Medicare</span>
-        <span class="ins-badge">✅ Private Insurance</span>
-        <span class="ins-badge">✅ Self-Pay</span>
-        <span class="ins-badge">✅ Managed Care Plans</span>
+        <span class="ins-badge">✅ Facility Direct-Billing</span>
       </div>
     </div>
   </div>
@@ -829,8 +828,8 @@
   <div class="cta-strip">
     <div class="section-container" style="max-width:700px">
       <h2>Ready to Schedule Your Ride?</h2>
-      <p>Booking is simple. Fill out our form or call us and we'll handle the rest — including insurance verification.</p>
-      <button class="btn-white" onclick="showPage('contact')">📋 Book Now — It's Free to Schedule</button>
+      <p>Referring facilities can submit a request through our portal or call us, and our dispatch team will handle the rest, including Medicaid eligibility verification.</p>
+      <button class="btn-white" onclick="showPage('contact')">📋 Request a Transfer</button>
     </div>
   </div>
 
@@ -863,7 +862,7 @@
 
         <!-- 1 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-crisis-stabilization.jpg" alt="Behavioral health professional in a supportive conversation at a crisis stabilization unit" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/veh-crisis-center.jpg" alt="Manny Transit vehicle at a community crisis center with 24/7 walk-in services" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">01</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#007ACC,#00b4a0)">🚨</div>
@@ -880,7 +879,7 @@
 
         <!-- 2 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-psychiatric-hospital.jpg" alt="Calm, sunlit corridor inside a psychiatric hospital" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/veh-secure-cabin.jpg" alt="Inside a Manny Transit vehicle: clear safety partition between driver and passengers" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">02</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#00b4a0,#1dd1bc)">🏥</div>
@@ -897,7 +896,7 @@
 
         <!-- 3 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-community-mh.jpg" alt="Behavioral health staff at a community mental health center reception" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/team-recovery-center.jpg" alt="Manny Transit team member arriving at a community recovery center" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">03</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#007ACC,#f5a623)">🤝</div>
@@ -914,7 +913,7 @@
 
         <!-- 4 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-detox-recovery.jpg" alt="Support group holding hands in a circle at a recovery center" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/client-assist-detox.jpg" alt="Manny Transit team member assisting a client from the vehicle at a detox and recovery center" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">04</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#1dd1bc,#007ACC)">🌱</div>
@@ -931,7 +930,7 @@
 
         <!-- 5 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-bh-emergency.jpg" alt="Hospital emergency department entrance signage" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/veh-aed-cabin.jpg" alt="Manny Transit vehicle interior with AED, first-aid kit and seating" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">05</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#f5a623,#00b4a0)">🚑</div>
@@ -948,7 +947,7 @@
 
         <!-- 6 -->
         <div class="service-card">
-          <img class="service-card-img" src="img/svc-designated-facility.jpg" alt="Calm, bright waiting area inside a designated behavioral health facility" width="1400" height="800" loading="lazy" />
+          <img class="service-card-img" src="img/veh-secure-storage.jpg" alt="Manny Transit vehicle cargo area with secure storage for belongings" width="1024" height="572" loading="lazy" />
           <div class="service-card-body">
             <span class="service-number">06</span>
             <div class="service-icon-wrap" style="background:linear-gradient(135deg,#007ACC,#1dd1bc)">🏛️</div>
@@ -1097,7 +1096,7 @@
           <h4>Is there a cost if a trip isn't Medicaid-eligible?</h4>
           <button class="faq-toggle">+</button>
         </div>
-        <div class="faq-a"><p>For trips that don't qualify for behavioral health billing, we offer facility direct-billing and self-pay options. Contact us for a quote before scheduling.</p></div>
+        <div class="faq-a"><p>For trips that don't qualify for behavioral health billing, facility direct-billing is available. Private self-pay is not offered. Contact us before scheduling.</p></div>
       </div>
 
       <!-- VEHICLES -->
@@ -1163,7 +1162,7 @@
 
   <div class="services-hero">
     <h1>Book a Ride</h1>
-    <p>Give us a call and our team will confirm your booking, verify insurance coverage, and answer any questions — right on the phone.</p>
+    <p>Give us a call and our team will confirm your booking, verify Medicaid eligibility, and answer any questions — right on the phone.</p>
   </div>
 
   <section class="section">
@@ -1172,7 +1171,7 @@
 
         <div class="contact-info-card">
           <h3>Get in Touch</h3>
-          <p>We're here Monday through Friday. For urgent requests, leave a detailed message and we'll respond as quickly as possible.</p>
+          <p>We're available 24/7, 7 days a week. Call dispatch any time for urgent transfers, or email us and we'll respond as quickly as possible.</p>
 
           <div class="contact-detail">
             <div class="contact-detail-icon">📍</div>
@@ -1213,13 +1212,13 @@
             <div class="contact-detail-icon">💳</div>
             <div class="contact-detail-text">
               <h5>We Accept</h5>
-              <p>Medicaid · Medicare · Private Insurance · Self-Pay</p>
+              <p>Medicaid coverage only · Facility direct-billing</p>
             </div>
           </div>
 
           <div style="margin-top:2rem;padding:1.25rem;background:rgba(0,180,160,0.15);border-radius:14px;border:1px solid rgba(0,180,160,0.3)">
             <p style="font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.65;">
-              <strong style="color:var(--teal-light)">💡 Tip:</strong> When booking, please have your insurance card, Medicaid ID (if applicable), and your appointment details ready. This speeds up the verification process significantly.
+              <strong style="color:var(--teal-light)">💡 Tip:</strong> When booking, please have the client's Medicaid ID (if applicable) and the pickup and drop-off details ready. This speeds up the verification process significantly.
             </p>
           </div>
         </div>
@@ -1229,7 +1228,7 @@
           <h3>Call to Book Your Ride</h3>
           <p style="max-width:26rem;">
             To book a ride, please call us directly — our team will confirm your appointment,
-            verify insurance, and schedule your trip on the spot.
+            verify Medicaid eligibility, and schedule your trip on the spot.
           </p>
           <a href="tel:7209836104" class="btn-primary" style="justify-content:center;padding:1rem 2rem;margin-top:1rem;font-size:1.25rem;">
             📞 720-983-6104
@@ -1438,7 +1437,7 @@
         <li><a>📍 3505 E 39th Ave, Denver, CO 80205</a></li>
         <li><a href="https://www.mannytransit.com">🌐 www.mannytransit.com</a></li>
         <li><a>🕐 7 Days a Week — 24/7</a></li>
-        <li><a>💳 Medicaid Accepted</a></li>
+        <li><a>💳 Medicaid Coverage Only</a></li>
       </ul>
     </div>
   </div>
